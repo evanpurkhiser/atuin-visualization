@@ -264,15 +264,15 @@ export default function Home() {
       <div className="flex flex-col gap-12">
         <div className="flex flex-col gap-2" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
           <motion.h1
-            className="text-xl font-medium text-gray-300"
+            className="text-2xl font-medium text-gray-300"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            Evans CLI Output
+            Echoes in the Terminal
           </motion.h1>
           <motion.p
-            className="text-xs text-gray-500 leading-snug max-w-2xl"
+            className="text-sm text-gray-500 leading-snug max-w-2xl font-normal"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}

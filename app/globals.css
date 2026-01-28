@@ -9,3 +9,8 @@ body {
   font-family: 'DM Mono', 'Courier New', monospace;
   font-weight: 500;
 }
+
+::selection {
+  background-color: theme('colors.rose.400' / 40%);
+  color: theme('colors.white');
+}
