@@ -20,8 +20,14 @@ export default function Home() {
   const [total, setTotal] = useState<number | null>(null);
 
   useEffect(() => {
+    // Calculate the start date (one year ago)
+    const today = new Date();
+    const oneYearAgo = new Date(today);
+    oneYearAgo.setFullYear(today.getFullYear() - 1);
+    const startDate = oneYearAgo.toISOString().split("T")[0];
+
     // Fetch total
-    fetch("https://apis.evanpurkhiser.com/atuin-abacus/", {
+    fetch(`https://apis.evanpurkhiser.com/atuin-abacus/?start=${startDate}`, {
       headers: {
         "Prefer": "timezone=America/New_York",
       },
@@ -35,7 +41,7 @@ export default function Home() {
       });
 
     // Fetch history
-    fetch("https://apis.evanpurkhiser.com/atuin-abacus/history", {
+    fetch(`https://apis.evanpurkhiser.com/atuin-abacus/history?start=${startDate}`, {
       headers: {
         "Prefer": "timezone=America/New_York",
       },
@@ -46,11 +52,6 @@ export default function Home() {
         const dataMap = new Map(
           historyData.map((d) => [d.date, d.count])
         );
-
-        // Generate calendar grid for the past year
-        const today = new Date();
-        const oneYearAgo = new Date(today);
-        oneYearAgo.setFullYear(today.getFullYear() - 1);
 
         const calendarDays: CalendarDay[] = [];
         const currentDate = new Date(oneYearAgo);
