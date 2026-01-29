@@ -29,7 +29,7 @@ export default function Home() {
     // Fetch total
     fetch(`https://apis.evanpurkhiser.com/atuin-abacus/?start=${startDate}`, {
       headers: {
-        "Prefer": "timezone=America/New_York",
+        Prefer: "timezone=America/New_York",
       },
     })
       .then((res) => res.json())
@@ -41,17 +41,18 @@ export default function Home() {
       });
 
     // Fetch history
-    fetch(`https://apis.evanpurkhiser.com/atuin-abacus/history?start=${startDate}`, {
-      headers: {
-        "Prefer": "timezone=America/New_York",
-      },
-    })
+    fetch(
+      `https://apis.evanpurkhiser.com/atuin-abacus/history?start=${startDate}`,
+      {
+        headers: {
+          Prefer: "timezone=America/New_York",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((historyData: HistoryData[]) => {
         // Create a map of date strings to counts
-        const dataMap = new Map(
-          historyData.map((d) => [d.date, d.count])
-        );
+        const dataMap = new Map(historyData.map((d) => [d.date, d.count]));
 
         const calendarDays: CalendarDay[] = [];
         const currentDate = new Date(oneYearAgo);
@@ -100,7 +101,17 @@ export default function Home() {
           const p94 = getPercentile(logCounts, 94);
           const p98 = getPercentile(logCounts, 98);
 
-          console.log("Percentile thresholds:", { p10, p25, p40, p55, p70, p80, p88, p94, p98 });
+          console.log("Percentile thresholds:", {
+            p10,
+            p25,
+            p40,
+            p55,
+            p70,
+            p80,
+            p88,
+            p94,
+            p98,
+          });
 
           calendarDays.forEach((day) => {
             if (day.count === 0) {
@@ -263,7 +274,10 @@ export default function Home() {
   return (
     <div className="min-h-screen flex items-center justify-center px-8">
       <div className="flex flex-col gap-12">
-        <div className="flex flex-col gap-2" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+        <div
+          className="flex flex-col gap-2"
+          style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
+        >
           <motion.h1
             className="text-2xl font-medium text-gray-300"
             initial={{ opacity: 0, y: -20 }}
@@ -278,9 +292,11 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
           >
-            Every command tells a story. Through the quiet hum of terminals and the steady rhythm of keystrokes,
-            each moment is preserved—the invisible threads that weave together days of work, exploration, and creation.
-            This is the map of those journeys, rendered in color and time.
+            Every command tells a story. Through the quiet hum of terminals and
+            the steady rhythm of keystrokes, each moment is preserved—the
+            invisible threads that weave together days of work, exploration, and
+            creation. This is the map of those journeys, rendered in color and
+            time.
           </motion.p>
         </div>
 
@@ -312,7 +328,7 @@ export default function Home() {
               // Calculate starting index for this month
               const startIndex = months
                 .slice(0, monthIndex)
-                .reduce((sum, m) => sum + m.weeks.flatMap(w => w).length, 0);
+                .reduce((sum, m) => sum + m.weeks.flatMap((w) => w).length, 0);
 
               return (
                 <div key={monthIndex} className="flex flex-col gap-1">
@@ -321,7 +337,10 @@ export default function Home() {
                     className="text-xs text-gray-400 h-4 mb-1 lowercase"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3, delay: 0.5 + monthIndex * 0.05 }}
+                    transition={{
+                      duration: 0.3,
+                      delay: 0.5 + monthIndex * 0.05,
+                    }}
                   >
                     {month.name}
                   </motion.div>
@@ -335,9 +354,11 @@ export default function Home() {
                     }}
                   >
                     {month.weeks.flatMap((week, weekIndex) => {
-                      const weekStartIndex = startIndex + month.weeks
-                        .slice(0, weekIndex)
-                        .reduce((sum, w) => sum + w.length, 0);
+                      const weekStartIndex =
+                        startIndex +
+                        month.weeks
+                          .slice(0, weekIndex)
+                          .reduce((sum, w) => sum + w.length, 0);
 
                       return week.map((day, dayIndex) => {
                         const absoluteIndex = weekStartIndex + dayIndex;
@@ -359,7 +380,7 @@ export default function Home() {
                             transition={{
                               duration: 0.15,
                               delay: 0.5 + absoluteIndex * 0.002,
-                              ease: "easeOut"
+                              ease: "easeOut",
                             }}
                           >
                             {day.intensity >= 0 && (
@@ -402,7 +423,9 @@ export default function Home() {
               {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((intensity, i) => (
                 <motion.div
                   key={i}
-                  className={`w-[10px] h-[10px] ${getIntensityClass(intensity)}`}
+                  className={`w-[10px] h-[10px] ${getIntensityClass(
+                    intensity
+                  )}`}
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.2, delay: 1.2 + i * 0.03 }}
