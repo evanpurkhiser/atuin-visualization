@@ -418,7 +418,7 @@ export default function Home() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 1.6 }}
             >
-              {total.toLocaleString()} total commands over 365 days
+              {total.toLocaleString()} commands over 365 days
             </motion.div>
           )}
         </motion.div>
