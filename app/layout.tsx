@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type {Metadata} from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Atuin Visualization",
-  description: "Shell history contribution graph",
+  title: 'Atuin Visualization',
+  description: 'Shell history contribution graph',
 };
 
 export default function RootLayout({
