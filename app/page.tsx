@@ -169,16 +169,16 @@ export default function Home() {
       });
   }, []);
   const groupByMonth = () => {
-    const months: {
+    const months: Array<{
       name: string;
       weeks: CalendarDay[][];
-    }[] = [];
+    }> = [];
 
     let currentMonth = -1;
     let currentWeeks: CalendarDay[][] = [];
     let currentWeek: CalendarDay[] = [];
 
-    data.forEach((day, index) => {
+    data.forEach(day => {
       const month = day.date.getMonth();
       const year = day.date.getFullYear();
       const dayOfWeek = day.date.getDay() === 0 ? 6 : day.date.getDay() - 1;
