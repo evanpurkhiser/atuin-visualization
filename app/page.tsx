@@ -33,6 +33,7 @@
 // Calculate starting index for this month
 /* Month label */ /* Grid of days in this month */ /* Legend and Total */ /* Footer */
 import {useEffect, useState} from 'react';
+
 import {motion} from 'framer-motion';
 
 interface HistoryData {
