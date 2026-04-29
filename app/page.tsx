@@ -395,7 +395,7 @@ export default function Home() {
                                     year: 'numeric',
                                   })}
                                 </div>
-                                <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-[1px] border-4 border-transparent border-t-gray-800"></div>
+                                <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-[1px] border-4 border-transparent border-t-gray-800" />
                               </div>
                             )}
                           </motion.div>
