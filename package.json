@@ -2,7 +2,18 @@
   "name": "atuin-viz",
   "version": "1.0.0",
   "private": true,
-  "packageManager": "pnpm@10.15.1",
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "^24.15.0",
+      "onFail": "download"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": "10.33.2",
+      "onFail": "download"
+    }
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
