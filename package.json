@@ -2,6 +2,7 @@
   "name": "atuin-viz",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@10.15.1",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -27,5 +28,10 @@
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.19",
     "typescript": "^5.7.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp"
+    ]
   }
 }
