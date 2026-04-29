@@ -330,7 +330,10 @@ export default function Home() {
                 .reduce((sum, m) => sum + m.weeks.flatMap(w => w).length, 0);
 
               return (
-                <div key={monthIndex} className="flex flex-col gap-1">
+                <div
+                  key={month.weeks[0][0].date.toISOString().slice(0, 7)}
+                  className="flex flex-col gap-1"
+                >
                   {}
                   <motion.div
                     className="text-xs text-gray-400 h-4 mb-1 lowercase"
@@ -364,7 +367,7 @@ export default function Home() {
 
                         return (
                           <motion.div
-                            key={`${day.date.getTime()}-${dayIndex}`}
+                            key={day.date.getTime()}
                             className={`w-[10px] h-[10px] relative group ${
                               day.intensity === -1
                                 ? 'bg-transparent'
@@ -421,7 +424,7 @@ export default function Home() {
             <div className="flex gap-1">
               {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((intensity, i) => (
                 <motion.div
-                  key={i}
+                  key={intensity}
                   className={`w-[10px] h-[10px] ${getIntensityClass(intensity)}`}
                   initial={{opacity: 0, scale: 0}}
                   animate={{opacity: 1, scale: 1}}
