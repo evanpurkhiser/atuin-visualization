@@ -17,7 +17,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@evanpurkhiser/oxc-config": "^0.8.0",
+    "@evanpurkhiser/oxc-config": "^0.16.0",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
